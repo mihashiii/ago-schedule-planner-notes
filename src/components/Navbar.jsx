@@ -9,16 +9,17 @@ const Navbar = () => {
       className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur text-white"
       aria-label="Main"
     >
-      <div className="mx-auto max-w-7xl px-4">
+      <div className="w-full px-4">
         {/* Bar */}
-        <div className="h-16 md:h-20 flex items-center justify-between">
+        <div className="h-16 md:h-20 w-full flex items-center justify-between">
           {/* Brand */}
           <div className="flex items-center">
             <h1 className="text-2xl md:text-3xl font-bold">Ago.</h1>
           </div>
 
+
           {/* Desktop menu */}
-          <ul className="hidden md:flex items-center gap-2">
+          <ul className="hidden md:flex items-center gap-2 ml-auto">
             <li className="p-3 font-semibold hover:text-gray-300 cursor-pointer transition-colors">Home</li>
             <li className="p-3 font-semibold hover:text-gray-300 cursor-pointer transition-colors">Schedule</li>
             <li className="p-3 font-semibold hover:text-gray-300 cursor-pointer transition-colors">Notes</li>
