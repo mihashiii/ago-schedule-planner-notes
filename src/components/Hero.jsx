@@ -11,32 +11,75 @@ const Hero = () => {
         min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)]
       "
     >
-      {/* Left panel */}
-      <div className="w-full md:w-1/2 bg-white text-black flex items-center justify-center md:justify-start md:min-h-screen">
-        <div className="px-6 sm:px-12 md:px-20 py-12 md:py-0 max-w-[48rem] text-center md:text-left">
+      {/* Left panel with subtle motion */}
+      <div className="relative w-full md:w-1/2 bg-white text-black flex items-center justify-center md:justify-start md:min-h-screen">
+        {/* soft accent glow */}
+        <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-[#00df9a]/10 blur-3xl animate-leftBlob1" />
+        <div className="pointer-events-none absolute -bottom-20 -right-10 h-52 w-52 rounded-full bg-[#00df9a]/5 blur-3xl animate-leftBlob2" />
+
+        <div className="relative px-6 sm:px-12 md:px-20 py-12 md:py-0 max-w-[48rem] text-center md:text-left">
+          {/* shimmering accent line */}
+          <div className="mx-auto md:mx-0 mb-4 h-[3px] w-40 overflow-hidden rounded-full bg-gray-200/70">
+            <span className="block h-full w-1/2 bg-gradient-to-r from-[#00df9a] via-[#00df9a]/40 to-transparent animate-shimmerX" />
+          </div>
+
           <h1 className="font-bold text-5xl sm:text-5xl md:text-[3.5rem] lg:text-7xl leading-tight">
             Plan your time. <br />Keep your ideas.
           </h1>
+
           <h2 className="mt-4 font-medium text-2xl sm:text-[1.7rem] md:text-3xl lg:text-4xl text-gray-700">
             Ago. helps you stay organized with <br /> a simple, all-in-one schedule and <br /> notes app.
           </h2>
+
+          {/* floating chips */}
+          <div className="mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
+            <span className="px-3.5 py-2 rounded-full bg-black/5 border border-black/10 text-sm font-medium animate-floatY1">
+              Calendar
+            </span>
+            <span className="px-3.5 py-2 rounded-full bg-black/5 border border-black/10 text-sm font-medium animate-floatY2">
+              Notes
+            </span>
+            <span className="px-3.5 py-2 rounded-full bg-black/5 border border-black/10 text-sm font-medium animate-floatY3">
+              Reminders
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* Right panel (updated to match design) */}
+      {/* Right panel with animated background */}
       <div className="flex-1 w-full md:w-1/2 bg-black flex items-center justify-center">
-        <div className="w-[90%] max-w-[720px] aspect-[16/10] relative">
-          {/* Accent glow */}
-          <div className="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-[#00df9a]/20 via-transparent to-transparent blur-2xl"></div>
+        <div className="w-[90%] max-w-[720px] aspect-[16/10] relative overflow-hidden rounded-2xl">
+
+          {/* Moving grid (very subtle) */}
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage:
+                `linear-gradient(to right, rgba(255,255,255,0.15) 1px, transparent 1px),
+                 linear-gradient(to bottom, rgba(255,255,255,0.15) 1px, transparent 1px)`,
+              backgroundSize: '40px 40px, 40px 40px',
+              animation: 'gridMove 14s linear infinite',
+            }}
+          />
+
+          {/* Drifting green glow blobs */}
+          <div className="pointer-events-none absolute -top-16 -left-16 h-56 w-56 rounded-full bg-[#00df9a]/20 blur-3xl animate-blob1" />
+          <div className="pointer-events-none absolute -bottom-20 -right-16 h-72 w-72 rounded-full bg-[#00df9a]/20 blur-3xl animate-blob2" />
+          <div className="pointer-events-none absolute top-1/3 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-[#00df9a]/10 blur-2xl animate-blob3" />
+
+          {/* Tiny pulsing specks */}
+          <span className="absolute top-6 left-10 h-1.5 w-1.5 rounded-full bg-white/60 animate-pulse" />
+          <span className="absolute bottom-8 right-12 h-1.5 w-1.5 rounded-full bg-white/60 animate-pulse [animation-delay:400ms]" />
+          <span className="absolute top-1/2 right-1/3 h-1.5 w-1.5 rounded-full bg-white/60 animate-pulse [animation-delay:800ms]" />
 
           {/* Mock app card */}
-          <div className="relative h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl p-5 md:p-6">
+          <div className="relative z-[1] h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl p-5 md:p-6">
             {/* Top bar */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[#00df9a]"></span>
-                <span className="h-2 w-2 rounded-full bg-white/40"></span>
-                <span className="h-2 w-2 rounded-full bg-white/20"></span>
+                <span className="h-2 w-2 rounded-full bg-[#00df9a]" />
+                <span className="h-2 w-2 rounded-full bg-white/40" />
+                <span className="h-2 w-2 rounded-full bg-white/20" />
               </div>
               <div className="text-white/70 text-sm">Ago Preview</div>
             </div>
@@ -49,7 +92,6 @@ const Hero = () => {
                   <h3 className="text-white font-semibold">Schedule</h3>
                   <div className="text-[#00df9a] text-sm font-medium">Today</div>
                 </div>
-                {/* Mini calendar rows */}
                 <div className="grid grid-cols-7 gap-1 text-[10px] text-white/60">
                   {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => (
                     <div key={i} className="text-center">{d}</div>
@@ -91,8 +133,8 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Right rail reminders */}
-              <div className="col-span-12 md:col-span-12">
+              {/* Bottom row reminders */}
+              <div className="col-span-12">
                 <div className="mt-1 grid grid-cols-1 md:grid-cols-3 gap-3">
                   {[
                     { label: "Reminder", text: "Submit report @ 5 PM" },
@@ -117,6 +159,48 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Keyframes */}
+      <style>{`
+        /* Right side */
+        @keyframes gridMove {
+          0% { background-position: 0 0, 0 0; }
+          100% { background-position: 40px 0, 0 40px; }
+        }
+        @keyframes blob1 {
+          0%, 100% { transform: translate(0,0) scale(1); }
+          50% { transform: translate(20px, -10px) scale(1.05); }
+        }
+        @keyframes blob2 {
+          0%, 100% { transform: translate(0,0) scale(1); }
+          50% { transform: translate(-16px, 12px) scale(1.08); }
+        }
+        @keyframes blob3 {
+          0%, 100% { transform: translate(-50%,0) scale(1); }
+          50% { transform: translate(-50%, -8px) scale(1.04); }
+        }
+        .animate-blob1 { animation: blob1 12s ease-in-out infinite; }
+        .animate-blob2 { animation: blob2 15s ease-in-out infinite; }
+        .animate-blob3 { animation: blob3 18s ease-in-out infinite; }
+
+        /* Left side */
+        @keyframes shimmerX {
+          0% { transform: translateX(-60%); }
+          100% { transform: translateX(160%); }
+        }
+        .animate-shimmerX { animation: shimmerX 2.4s ease-in-out infinite; }
+
+        @keyframes floatY {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+        .animate-leftBlob1 { animation: floatY 10s ease-in-out infinite; }
+        .animate-leftBlob2 { animation: floatY 12s ease-in-out infinite 500ms; }
+
+        .animate-floatY1 { animation: floatY 5.5s ease-in-out infinite; }
+        .animate-floatY2 { animation: floatY 6.2s ease-in-out infinite 300ms; }
+        .animate-floatY3 { animation: floatY 6.8s ease-in-out infinite 600ms; }
+      `}</style>
     </div>
   )
 }
