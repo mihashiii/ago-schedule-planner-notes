@@ -2,7 +2,9 @@
 @import "tailwindcss";
 
 
-:root, html, body {
+:root,
+html,
+body {
   height: 100%;
 }
 
